@@ -3,20 +3,25 @@ package Hw3;
 import java.util.Scanner;
 
 public class Lotto {
-	public static void autoNum(int x) {
-//		for (int i = 0; i <= 5; i++) {
-//			Math.random()*x+1
-//		}
+	public static void autoNum(int x[], int sum) {
+		System.out.println("隨機選號:");
+		int r[] = new int[6];
+		for (int i = 0; i <= 5; i++) {
+			int z = (int) (Math.random() * sum) + 1;
+			r[i] = x[z];
+			System.out.println(x[z]);
+
+		}
 	}
 
-	public void numList(int x) {
+	public int[] numList(int x) {
 		int sum = 0;
-//		int y[] = new int[49];
+		int y[] = new int[49];
 		for (int i = 1; i <= 49; i++) {
 			if (i == x || i / 10 == x || i % 10 == x) {
 				continue;
 			} else {
-//				y[sum] = i;
+				y[sum] = i;
 				System.out.print(i + "\t");
 				sum++;
 			}
@@ -27,7 +32,8 @@ public class Lotto {
 		}
 
 		System.out.println("總共有" + sum + "可以選");
-		autoNum(sum);
+		autoNum(y, sum);
+		return y;
 	}
 
 	public static void main(String[] args) {
